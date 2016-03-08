@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="internship">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="css/menu.css" />
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script >
+        angular.module("internship", []);
+    </script>
+    <script src="app/controllers/internshipController.js"></script>
+
+</head>
+<body ng-controller="internshipController">
+<nav class="top-menu hidden-lg">
+    <div class="menu-block" data-toggle="offcanvas" data-target=".side-menu" data-canvas="body">
+
+        <i class="ionicons ion-navicon"></i>
+
+
+        <div class="menu">
+            Menu
+        </div>
+    </div>
+</nav>
+
+
+<nav class="side-menu offcanvas-xs offcanvas-sm offcanvas-md navmenu-fixed-left" role="navigation" role="navigation">
+    <h3>
+        <i class="fa fa-area-chart"></i>
+        <span>Reports</span>
+    </h3>
+
+    <h3>
+        <i class="fa fa-sort"></i>
+        <span>Sorting</span>
+    </h3>
+</nav>
+<div class="clearfix"></div>
+
+<div class="container extra-side-menu-width">
+
+    <form novalidate name="internshipForm"
+          ng-submit="saveInternship()" >
+
+        <div>
+            <label>Initials</label>
+            <span class="error" ng-show="internshipForm.initials.$error.required &&
+            internshipForm.$submitted">
+                Initials are required
+            </span>
+            <input type="text" required ng-model="internship.initials"
+                   name="initials" />
+        </div>
+
+        <div>
+            <label>Date</label>
+            <input type="text" required ng-model="internship.date" name="date"/>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </form>
+
+</div>
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+</body>
+</html>
