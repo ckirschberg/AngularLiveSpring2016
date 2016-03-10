@@ -7,11 +7,22 @@ angular.module("internship").
             console.log($scope.internship);
 
             if ($scope.internshipForm.$valid) {
-                alert("Ok, we'll save it to the server");
+                //alert("Ok, we'll save it to the server");
+
+                //Call server, when we know how to do that
+                //We will use these later, to call an api.
+                //$http
+                //$resource
+
+                var fakedResponse = {
+                    error: "No! (reason should be added)"
+                };
+                //save the fake server response to the scope,
+                //so the view can access it (used in html file).
+                $scope.serverResponse = fakedResponse;
             }
             else {
                 alert("fix the errors first, please.");
             }
-
         };
     });
