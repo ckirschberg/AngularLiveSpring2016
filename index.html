@@ -11,69 +11,46 @@
     <link rel="stylesheet" href="css/menu.css" />
 
     <script src="node_modules/angular/angular.min.js"></script>
-    <script >
-        angular.module("internship", []);
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script>
+        angular.module("internship", ['ui.router']);
     </script>
     <script src="app/controllers/internshipController.js"></script>
+    <script src="app/navigation.js"></script>
 
 </head>
 <body ng-controller="internshipController">
-<nav class="top-menu hidden-lg">
-    <div class="menu-block" data-toggle="offcanvas" data-target=".side-menu" data-canvas="body">
+    <nav class="top-menu hidden-lg">
+        <div class="menu-block" data-toggle="offcanvas" data-target=".side-menu" data-canvas="body">
 
-        <i class="ionicons ion-navicon"></i>
+            <i class="ionicons ion-navicon"></i>
 
 
-        <div class="menu">
-            Menu
+            <div class="menu">
+                Menu
+            </div>
         </div>
+    </nav>
+
+
+    <nav class="side-menu offcanvas-xs offcanvas-sm offcanvas-md navmenu-fixed-left" role="navigation" role="navigation">
+        <h3 ui-sref="new-internship">
+            <i class="fa fa-area-chart"></i>
+            <span>Reports</span>
+        </h3>
+
+        <h3 ui-sref="all-internships">
+            <i class="fa fa-sort"></i>
+            <span>Sorting</span>
+        </h3>
+    </nav>
+    <div class="clearfix"></div>
+
+    <div class="container extra-side-menu-width">
+
+        <div ui-view=""></div>
+
     </div>
-</nav>
-
-
-<nav class="side-menu offcanvas-xs offcanvas-sm offcanvas-md navmenu-fixed-left" role="navigation" role="navigation">
-    <h3>
-        <i class="fa fa-area-chart"></i>
-        <span>Reports</span>
-    </h3>
-
-    <h3>
-        <i class="fa fa-sort"></i>
-        <span>Sorting</span>
-    </h3>
-</nav>
-<div class="clearfix"></div>
-
-<div class="container extra-side-menu-width">
-    <form novalidate name="internshipForm"
-          ng-submit="saveInternship()" >
-
-        <div>
-            <label>Initials</label>
-            <span class="error"
-                  ng-show="internshipForm.initials.$error.required &&
-                    internshipForm.$submitted">
-
-                Initials are required
-            </span>
-
-            <span class="error" ng-show="" >
-                {{ serverResponse.error }}
-            </span>
-
-            <input type="text" ng-model="internship.initials"
-                   name="initials" />
-        </div>
-
-        <div>
-            <label>Date</label>
-            <input type="text" required ng-model="internship.date" name="date"/>
-        </div>
-
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </form>
-
-</div>
 
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>

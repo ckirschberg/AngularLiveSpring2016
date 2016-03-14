@@ -1,0 +1,27 @@
+<form novalidate name="internshipForm"
+      ng-submit="saveInternship()" >
+
+    <div>
+        <label>Initials</label>
+            <span class="error"
+                  ng-show="internshipForm.initials.$error.required &&
+                    internshipForm.$submitted">
+
+                Initials are required
+            </span>
+
+            <span class="error" ng-show="" >
+                {{ serverResponse.error }}
+            </span>
+
+        <input type="text" ng-model="internship.initials"
+               name="initials" />
+    </div>
+
+    <div>
+        <label>Date</label>
+        <input type="text" required ng-model="internship.date" name="date"/>
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>
