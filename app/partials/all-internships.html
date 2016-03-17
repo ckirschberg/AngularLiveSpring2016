@@ -1,1 +1,4 @@
-This is the all-internships file.
+
+<div ng-repeat="item in dummyInternships" ui-sref="new-internship">
+    {{item.initials}} {{item.date | date:'dd-MM-yyyy'}}
+</div>

@@ -3,19 +3,19 @@
 
     <div>
         <label>Initials</label>
-            <span class="error"
-                  ng-show="internshipForm.initials.$error.required &&
-                    internshipForm.$submitted">
+        <span class="error"
+              ng-show="internshipForm.initials.$error.required &&
+                internshipForm.$submitted">
 
-                Initials are required
-            </span>
+            Initials are required
+        </span>
 
-            <span class="error" ng-show="" >
-                {{ serverResponse.error }}
-            </span>
+        <span class="error" ng-show="" >
+            {{ serverResponse.error }}
+        </span>
 
         <input type="text" ng-model="internship.initials"
-               name="initials" />
+               name="initials" required/>
     </div>
 
     <div>

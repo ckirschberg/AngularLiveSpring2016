@@ -16,6 +16,7 @@
         angular.module("internship", ['ui.router']);
     </script>
     <script src="app/controllers/internshipController.js"></script>
+    <script src="app/controllers/newEditInternshipController.js"></script>
     <script src="app/navigation.js"></script>
 
 </head>
@@ -24,7 +25,6 @@
         <div class="menu-block" data-toggle="offcanvas" data-target=".side-menu" data-canvas="body">
 
             <i class="ionicons ion-navicon"></i>
-
 
             <div class="menu">
                 Menu
@@ -47,11 +47,8 @@
     <div class="clearfix"></div>
 
     <div class="container extra-side-menu-width">
-
         <div ui-view=""></div>
-
     </div>
-
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
