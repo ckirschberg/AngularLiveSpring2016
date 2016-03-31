@@ -2,6 +2,8 @@ angular.module("internship").controller("newEditInternshipController", function(
     $scope.internship = {};
     console.log("hello from newEditInternshipController!");
 
+    $scope.internship = $stateParams.internship;
+
     $scope.saveInternship = function(){
         if ($scope.internshipForm.$valid) {
             //alert("Ok, we'll save it to the server");

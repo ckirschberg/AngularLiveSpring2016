@@ -6,7 +6,8 @@ angular.module('internship').
     $stateProvider.state('new-internship', {
         url: '/new-internship', // if user changes url
         templateUrl: 'app/partials/internship-form.html',
-        controller: 'newEditInternshipController'
+        controller: 'newEditInternshipController',
+        params: { internship: null }
     })
         .state('all-internships', {
             url: '/all-internships', //part of the url in browser, #/
