@@ -7,7 +7,7 @@ angular.module('internship').
         url: '/new-internship', // if user changes url
         templateUrl: 'app/partials/internship-form.html',
         controller: 'newEditInternshipController',
-        params: { internship: null }
+        params: { internshipParameter: null } //define a internship variable on $stateParams and set default value to null
     })
         .state('all-internships', {
             url: '/all-internships', //part of the url in browser, #/

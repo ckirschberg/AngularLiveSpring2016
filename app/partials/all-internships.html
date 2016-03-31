@@ -1,4 +1,6 @@
 
-<div ng-repeat="item in dummyInternships">
+<div ng-repeat="item in dummyInternships"
+     ng-click="editInternship(item)">
+
     {{item.initials}} {{item.date | date:'dd-MM-yyyy'}}
 </div>

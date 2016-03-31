@@ -1,8 +1,12 @@
-angular.module("internship").controller("newEditInternshipController", function($scope, $state) {
+angular.module("internship")
+    .controller("newEditInternshipController",
+        function($scope, $state, $stateParams) {
+
     $scope.internship = {};
     console.log("hello from newEditInternshipController!");
 
-    $scope.internship = $stateParams.internship;
+    //read the internship from the $stateParams service.
+    $scope.internship = $stateParams.internshipParameter;
 
     $scope.saveInternship = function(){
         if ($scope.internshipForm.$valid) {
