@@ -1,6 +1,6 @@
 angular.module("internship")
     .controller("newEditInternshipController",
-        function($scope, $state, $stateParams) {
+        function($scope, $state, $stateParams, $http) {
 
     $scope.internship = {};
     console.log("hello from newEditInternshipController!");
@@ -33,8 +33,24 @@ angular.module("internship")
             //and we should save the newly created id on our local
             //internship, like
             //$scope.internship.id = serverInternship.id;
-            $scope.$parent.dummyInternships.push($scope.internship);
-            $state.go("all-internships");
+
+
+            //what if it is edited?
+
+            $http({ method: "POST",
+                data: $scope.internship,
+                url: "http://angularkea1.azurewebsites.net/api/internships/Create" })
+                .success(function(data) {
+                    //console.log(data);
+                    console.log(data);
+
+                    $scope.$parent.dummyInternships.push($scope.internship);
+                    $state.go("all-internships");
+                }).error(function(data) {
+
+            });
+
+
         }
         else {
             //alert("fix the errors first, please.");

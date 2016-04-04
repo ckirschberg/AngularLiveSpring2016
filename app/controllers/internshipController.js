@@ -1,6 +1,6 @@
 angular.module("internship").
     controller("internshipController",
-    function($scope, $state) {
+    function($scope, $state, $http) {
 
         console.log("It works!");
 
@@ -15,9 +15,17 @@ angular.module("internship").
         };
 
         var today = new Date();
-        $scope.dummyInternships = [
-            {initials: "chrk", date: today},
-            {initials: "krmm", date: today},
-            {initials: "asbc", date: today}
-        ];
+
+        $http({ method: "GET",
+            url: "http://angularkea1.azurewebsites.net/api/internships/GetAll" })
+            .success(function(data) {
+                console.log(data);
+                $scope.dummyInternships = data;
+
+
+            }).error(function(data) {
+
+            });
+
+
     });
