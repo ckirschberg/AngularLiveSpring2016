@@ -37,19 +37,25 @@ angular.module("internship")
 
             //what if it is edited?
 
-            $http({ method: "POST",
-                data: $scope.internship,
-                url: "http://angularkea1.azurewebsites.net/api/internships/Create" })
-                .success(function(data) {
-                    //console.log(data);
+            new $scope.$parent.internshipResource($scope.internship)
+                .$save(function(data) {
+                    //saved
                     console.log(data);
+                });
 
-                    $scope.$parent.dummyInternships.push($scope.internship);
-                    $state.go("all-internships");
-                }).error(function(data) {
-
-            });
-
+            //$http({ method: "POST",
+            //    data: $scope.internship,
+            //    url: "http://angularkea1.azurewebsites.net/api/internships/Create" })
+            //    .success(function(data) {
+            //        //console.log(data);
+            //        console.log(data);
+            //
+            //        $scope.$parent.dummyInternships.push($scope.internship);
+            //        $state.go("all-internships");
+            //    }).error(function(data) {
+            //
+            //});
+            //
 
         }
         else {

@@ -1,6 +1,6 @@
 angular.module("internship").
     controller("internshipController",
-    function($scope, $state, $http) {
+    function($scope, $state, $http, $resource) {
 
         console.log("It works!");
 
@@ -16,16 +16,35 @@ angular.module("internship").
 
         var today = new Date();
 
-        $http({ method: "GET",
-            url: "http://angularkea1.azurewebsites.net/api/internships/GetAll" })
-            .success(function(data) {
-                console.log(data);
-                $scope.dummyInternships = data;
+        //configured $resource
+        $scope.internshipResource =
+            $resource(
+                "http://angularkea2.azurewebsites.net/api/internships/:id",
+                    { id: "@id" },
+                    {
+                        update: { method: 'PUT' }
+                    }
+                );
 
-
-            }).error(function(data) {
-
+        //retrieve all internships
+        $scope.internshipResource.query(
+            function(data) {
+                 $scope.dummyInternships = data;
+            }, function(data) {
+                            //something went wrong....
             });
+
+
+        //$http({ method: "GET",
+        //    url: "http://angularkea1.azurewebsites.net/api/internships/GetAll" })
+        //    .success(function(data) {
+        //        console.log(data);
+        //        $scope.dummyInternships = data;
+        //
+        //
+        //    }).error(function(data) {
+        //
+        //    });
 
 
     });
