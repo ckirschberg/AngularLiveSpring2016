@@ -8,6 +8,23 @@ angular.module("internship")
     //read the internship from the $stateParams service.
     $scope.internship = $stateParams.internshipParameter;
 
+    $scope.deleteInternship = function() {
+
+        $http({ method: "POST",
+            data: $scope.internship,
+            url: "http://angularkea1.azurewebsites.net/api/internships/Delete/" + $scope.internship._id })
+            .success(function(data) {
+                console.log(data);
+
+                //$scope.$parent.dummyInternships.push($scope.internship);
+                //delete the internship from the local array, dummyInternships.
+
+                $state.go("all-internships");
+            }).error(function(data) {
+        });
+    };
+
+
     $scope.saveInternship = function(){
         if ($scope.internshipForm.$valid) {
             //alert("Ok, we'll save it to the server");
@@ -37,24 +54,39 @@ angular.module("internship")
 
             //what if it is edited?
 
-            new $scope.$parent.internshipResource($scope.internship)
-                .$save(function(data) {
-                    //saved
-                    console.log(data);
-                });
-
-            //$http({ method: "POST",
-            //    data: $scope.internship,
-            //    url: "http://angularkea1.azurewebsites.net/api/internships/Create" })
-            //    .success(function(data) {
-            //        //console.log(data);
+            //new $scope.$parent.internshipResource($scope.internship)
+            //    .$save(function(data) {
+            //        //saved
             //        console.log(data);
-            //
-            //        $scope.$parent.dummyInternships.push($scope.internship);
-            //        $state.go("all-internships");
-            //    }).error(function(data) {
-            //
-            //});
+            //    });
+
+            if ($scope.internship._id === undefined) {
+                $http({ method: "POST",
+                    data: $scope.internship,
+                    url: "http://angularkea1.azurewebsites.net/api/internships/Create" })
+                    .success(function(data) {
+                        //console.log(data);
+                        console.log(data);
+
+                        $scope.$parent.dummyInternships.push($scope.internship);
+                        $state.go("all-internships");
+                    }).error(function(data) {
+                });
+            }
+            else {
+                $http({ method: "POST",
+                    data: $scope.internship,
+                    url: "http://angularkea1.azurewebsites.net/api/internships/Update/" + $scope.internship._id })
+                    .success(function(data) {
+                        console.log(data);
+
+                        //$scope.$parent.dummyInternships.push($scope.internship);
+                        //find the existing internship and update locally.
+
+                        $state.go("all-internships");
+                    }).error(function(data) {
+                });
+            }
             //
 
         }
