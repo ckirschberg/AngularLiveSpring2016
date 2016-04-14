@@ -1,5 +1,11 @@
 
-<div ng-repeat="item in dummyInternships"
+    <div class="container">
+        <div class="col-xs-3">
+            <input type="text" class="form-control " ng-model="search"/>
+        </div>
+    </div>
+
+<div ng-repeat="item in dummyInternships | internshipSearch:search"
      ng-click="editInternship(item)">
 
     {{item.initials}} {{item.date | date:'dd-MM-yyyy'}}

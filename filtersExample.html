@@ -66,8 +66,9 @@
             <tbody>
             <!--<tr ng-repeat="p in products | limitTo:limitVal">-->
             <!--<tr ng-repeat="p in products | filter: { category: 'Drinks' } | limitTo:limitVal">-->
-            <!--<tr ng-repeat="p in products | filter: { category: limitVal }">-->
-            <tr ng-repeat="p in products | filter: selectedItems ">
+                <!--<tr ng-repeat="p in products | filter: { category: limitVal }">-->
+            <!--<tr ng-repeat="p in products | filter: selectedItems ">-->
+            <tr ng-repeat="p in products | orderBy: ['category','price'] ">
                 <td>{{p.name | uppercase }}</td>
                 <td>{{p.category | lowercase }}</td>
                 <!--<td>{{ getExpiryDate(p.expiry) | date: 'shortDate' }}</td>-->
