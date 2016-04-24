@@ -1,8 +1,12 @@
 angular.module("internship").
     controller("internshipController",
-    function($scope, $state, $http, $resource) {
+    function($scope, $state, $http, $resource, numbersService) {
 
         console.log("It works!");
+        console.log(numbersService.get());
+        numbersService.add(4);
+        console.log(numbersService.get());
+
 
         $scope.editInternship = function(internshipToCopy) {
           //this should navigate sending the internship to the new state.
