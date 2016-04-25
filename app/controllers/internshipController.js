@@ -2,10 +2,28 @@ angular.module("internship").
     controller("internshipController",
     function($scope, $state, $http, $resource, numbersService) {
 
+        internshipApiService.getInternships()
+            .then(function(internships) {
+                $scope.dummyInternships = internships;
+            }, function(error) {
+                //...
+            });
+
+        numbersService.testPromise()
+            .then(function(data) {
+                //resolved
+                alert(data);
+            }, function(data) {
+                //rejected
+                alert(data);
+            });
+
+
         console.log("It works!");
         console.log(numbersService.get());
         numbersService.add(4);
         console.log(numbersService.get());
+
 
 
         $scope.editInternship = function(internshipToCopy) {
@@ -20,23 +38,25 @@ angular.module("internship").
 
         var today = new Date();
 
-        //configured $resource
-        $scope.internshipResource =
-            $resource(
-                "http://angularkea2.azurewebsites.net/api/internships/:id",
-                    { id: "@id" },
-                    {
-                        update: { method: 'PUT' }
-                    }
-                );
 
+
+        //configured $resource
+        //$scope.internshipResource =
+        //    $resource(
+        //        "http://angularkea2.azurewebsites.net/api/internships/:id",
+        //            { id: "@id" },
+        //            {
+        //                update: { method: 'PUT' }
+        //            }
+        //        );
+        //
         //retrieve all internships
-        $scope.internshipResource.query(
-            function(data) {
-                 $scope.dummyInternships = data;
-            }, function(data) {
-                            //something went wrong....
-            });
+        //$scope.internshipResource.query(
+        //    function(data) {
+        //         $scope.dummyInternships = data;
+        //    }, function(data) {
+        //                    something went wrong....
+            //});
 
 
         //$http({ method: "GET",
