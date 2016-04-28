@@ -1,6 +1,7 @@
 angular.module("internship").
     controller("internshipController",
-    function($scope, $state, $http, $resource, numbersService) {
+    function($scope, $state, $http, $resource,
+             numbersService, internshipApiService) {
 
         internshipApiService.getInternships()
             .then(function(internships) {
@@ -9,20 +10,20 @@ angular.module("internship").
                 //...
             });
 
-        numbersService.testPromise()
-            .then(function(data) {
-                //resolved
-                alert(data);
-            }, function(data) {
-                //rejected
-                alert(data);
-            });
+        //numbersService.testPromise()
+        //    .then(function(data) {
+        //        //resolved
+        //        alert(data);
+        //    }, function(data) {
+        //        //rejected
+        //        alert(data);
+        //    });
 
 
-        console.log("It works!");
-        console.log(numbersService.get());
-        numbersService.add(4);
-        console.log(numbersService.get());
+        //console.log("It works!");
+        //console.log(numbersService.get());
+        //numbersService.add(4);
+        //console.log(numbersService.get());
 
 
 
